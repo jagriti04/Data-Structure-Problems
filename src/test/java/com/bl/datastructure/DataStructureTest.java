@@ -10,7 +10,7 @@ public class DataStructureTest {
 		Assert.assertEquals(true, welcomeReturns);
 	}
 
-	//UC1 test case to create simple linked list
+	// UC1 test case to create simple linked list
 	@Test
 	public void givenThreeElements_whenLinked_shouldPassLinkedListTest() {
 		Node<Integer> firstNode = new Node<>(56);
@@ -21,10 +21,10 @@ public class DataStructureTest {
 		boolean result = firstNode.getNext().equals(secondNode) && secondNode.getNext().equals(thirdNode);
 		Assert.assertTrue(result);
 	}
-	
-	// UC2 Linked list test
+
+	// UC2 Linked list add node test
 	@Test
-	public void given3elementsWhenLinkedShouldBeAddedToTop() {
+	public void givenThreeElements_whenLinked_shouldBeAddedToTop() {
 		Node<Integer> thirdNode = new Node<>(56);
 		Node<Integer> secondNode = new Node<>(30);
 		Node<Integer> firstNode = new Node<>(70);
@@ -34,6 +34,21 @@ public class DataStructureTest {
 		linkedList.add(thirdNode);
 		boolean result = linkedList.head.equals(thirdNode) && linkedList.head.getNext().equals(secondNode)
 				&& linkedList.tail.equals(firstNode);
+		Assert.assertTrue(result);
+	}
+
+	// UC3 Linked list append node test
+	@Test
+	public void givenThreeElements_whenLinked_shouldBeAddedAtEnd() {
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(70);
+		LinkedList linkedList = new LinkedList();
+		linkedList.append(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		boolean result = linkedList.head.equals(firstNode) && linkedList.head.getNext().equals(secondNode)
+				&& linkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
 	}
 }
