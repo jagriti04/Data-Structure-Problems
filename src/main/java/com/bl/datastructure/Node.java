@@ -1,15 +1,14 @@
 package com.bl.datastructure;
 
-public class Node <K> {
+public class Node<K> implements INode<K> {
 	private K key;
-	private Node next;
-	
-	// constructor
+	private INode<K> next;
+
 	public Node(K key) {
 		this.key = key;
 		this.next = null;
 	}
-	
+
 	public K getKey() {
 		return key;
 	}
@@ -18,11 +17,12 @@ public class Node <K> {
 		this.key = key;
 	}
 
-	public Node getNext() {
+	public INode<K> getNext() {
 		return next;
 	}
 
-	public void setNext(Node next) {
+	@Override
+	public void setNext(INode<K> next) {
 		this.next = next;
 	}
 
