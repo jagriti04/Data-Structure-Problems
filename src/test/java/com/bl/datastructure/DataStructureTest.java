@@ -98,4 +98,20 @@ public class DataStructureTest {
 				&& linkedList.tail.equals(secondNode);
 		Assert.assertTrue(result);
 	}
+
+	// UC7 find the node with given key value
+	@Test
+	public void givenKeyValue_shouldReturnNodeWithKey() {
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(70);
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		linkedList.append(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		INode<Integer> resultNode = linkedList.findNode(30);
+		boolean result = resultNode.equals(secondNode);
+		Assert.assertTrue(result);
+	}
+
 }

@@ -67,15 +67,27 @@ public class LinkedList<K> {
 		}
 	}
 	
+	// search linked list to find an element
+	public INode<K> findNode(K key) {
+		INode<K> tempNode = this.head;
+		while (tempNode != null) {
+			if (tempNode.getKey() == key) {
+				return tempNode;
+			}
+			tempNode = tempNode.getNext();
+		}
+		System.out.println("No such node");
+		return null;
+	}
+	
 	// print the linked list
 	public void printLinkedList() {
 		INode<K> tempNode = this.head;
 		int nodeNum = 1;
-		while (tempNode.getNext() != null) {
+		while (tempNode != null) {
 			System.out.println(nodeNum + " "+ tempNode.getKey());
 			tempNode = tempNode.getNext();
 			nodeNum++;
 		}
-		System.out.println(nodeNum + " "+ tempNode.getKey());
 	}
 }
