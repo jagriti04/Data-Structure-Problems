@@ -3,10 +3,12 @@ package com.bl.datastructure;
 public class LinkedList<K> {
 	public INode<K> head;
 	public INode<K> tail;
+	private int linkedListSize;
 
 	public LinkedList() {
 		this.head = null;
 		this.tail = null;
+		linkedListSize = 0;
 	}
 
 	// add element(Node) to the linked list
@@ -20,6 +22,7 @@ public class LinkedList<K> {
 			this.head = newNode;
 			this.head.setNext(tempNode);
 		}
+		linkedListSize++;
 	}
 
 	// append node to the linked List
@@ -32,6 +35,7 @@ public class LinkedList<K> {
 			this.tail.setNext(newNode);
 			this.tail = newNode;
 		}
+		linkedListSize++;
 	}
 
 	// Insert nodes between nodes
@@ -41,6 +45,7 @@ public class LinkedList<K> {
 		newNode.setNext(tempNode);
 		System.out.println(" --- Final linked list after insert ----");
 		printLinkedList();
+		linkedListSize++;
 	}
 
 	// delete first node
@@ -51,6 +56,7 @@ public class LinkedList<K> {
 			INode<K> tempNode = this.head;
 			this.head = tempNode.getNext();
 		}
+		linkedListSize--;
 	}
 
 	// delete last node
@@ -65,6 +71,26 @@ public class LinkedList<K> {
 			tempNode.setNext(null);
 			this.tail = tempNode;
 		}
+		linkedListSize--;
+	}
+	
+	// delete the given node
+	public void deleteGivenNode(INode<K> givenNode) {
+		INode<K> tempNode = this.head;
+		while (tempNode != null) {
+			if (tempNode.getNext() == givenNode) {
+				tempNode.setNext(givenNode.getNext());
+			}
+			tempNode = tempNode.getNext();
+		}
+		System.out.println("After delete---");
+		printLinkedList();
+		linkedListSize--;
+	}
+
+	//get size of linkedList
+	public int getSize() {
+		return linkedListSize;
 	}
 	
 	// search linked list to find an element

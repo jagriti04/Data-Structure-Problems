@@ -131,4 +131,23 @@ public class DataStructureTest {
 				&& linkedList.head.getNext().getNext().equals(newNode) && linkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
 	}
+
+	// UC9 find the node delete it and print the size of final linked list
+	@Test
+	public void givenFourNodes_findANode_deleteIt_shouldReturnSizeOfLinkedList() {
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(40);
+		Node<Integer> fourthNode = new Node<>(70);
+		linkedList.append(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		linkedList.append(fourthNode);
+		
+		INode<Integer> nodeFound = linkedList.findNode(40);
+		linkedList.deleteGivenNode(nodeFound);
+		int size = linkedList.getSize();
+		Assert.assertEquals(size, 3);
+	}
 }
