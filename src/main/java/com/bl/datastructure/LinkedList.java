@@ -1,8 +1,8 @@
 package com.bl.datastructure;
 
-public class LinkedList {
-	public INode head;
-	public INode tail;
+public class LinkedList<K> {
+	public INode<K> head;
+	public INode<K> tail;
 
 	public LinkedList() {
 		this.head = null;
@@ -10,20 +10,20 @@ public class LinkedList {
 	}
 
 	// add element(Node) to the linked list
-	public void add(INode newNode) {
+	public void add(INode<K> newNode) {
 		if (this.tail == null)
 			this.tail = newNode;
 		if (this.head == null)
 			this.head = newNode;
 		else {
-			INode tempNode = this.head;
+			INode<K> tempNode = this.head;
 			this.head = newNode;
 			this.head.setNext(tempNode);
 		}
 	}
 
 	// append node to the linked List
-	public void append(INode newNode) {
+	public void append(INode<K> newNode) {
 		if (this.head == null)
 			this.head = newNode;
 		if (this.tail == null)
@@ -40,14 +40,42 @@ public class LinkedList {
 		firstNode.setNext(newNode);
 		newNode.setNext(tempNode);
 	}
-	
+
 	// delete first node
 	public void pop() {
 		if (this.head == null) {
 			System.out.println("Empty linked list");
 		} else {
-			INode tempNode = this.head;
+			INode<K> tempNode = this.head;
 			this.head = tempNode.getNext();
 		}
+	}
+
+	// delete last node
+	public void popLastNode() {
+		printLinkedList();
+		if (this.head == null && this.tail == null) {
+			System.out.println("Empty linked list");
+		} else {
+			INode<K> tempNode = this.head;
+			while (tempNode.getNext() !=  this.tail) {
+				tempNode = tempNode.getNext();
+			}
+			tempNode.setNext(null);
+			this.tail = tempNode;
+			printLinkedList();
+		}
+	}
+	
+	// print the linked list
+	public void printLinkedList() {
+		INode<K> tempNode = this.head;
+		int nodeNum = 1;
+		while (tempNode.getNext() != null) {
+			System.out.println(nodeNum + " "+ tempNode.getKey());
+			tempNode = tempNode.getNext();
+			nodeNum++;
+		}
+		System.out.println(nodeNum + " "+ tempNode.getKey());
 	}
 }

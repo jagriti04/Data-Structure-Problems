@@ -28,7 +28,7 @@ public class DataStructureTest {
 		Node<Integer> thirdNode = new Node<>(56);
 		Node<Integer> secondNode = new Node<>(30);
 		Node<Integer> firstNode = new Node<>(70);
-		LinkedList linkedList = new LinkedList();
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
 		linkedList.add(firstNode);
 		linkedList.add(secondNode);
 		linkedList.add(thirdNode);
@@ -43,7 +43,7 @@ public class DataStructureTest {
 		Node<Integer> firstNode = new Node<>(56);
 		Node<Integer> secondNode = new Node<>(30);
 		Node<Integer> thirdNode = new Node<>(70);
-		LinkedList linkedList = new LinkedList();
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
 		linkedList.append(firstNode);
 		linkedList.append(secondNode);
 		linkedList.append(thirdNode);
@@ -51,14 +51,14 @@ public class DataStructureTest {
 				&& linkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
 	}
-	
+
 	// UC4 insert a node between two nodes
 	@Test
 	public void givenTwoNodes_shouldInsertThirdNodeBetweenThem() {
 		Node<Integer> firstNode = new Node<>(56);
 		Node<Integer> secondNode = new Node<>(30);
 		Node<Integer> thirdNode = new Node<>(70);
-		LinkedList linkedList = new LinkedList();
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
 		linkedList.append(firstNode);
 		linkedList.append(thirdNode);
 		linkedList.insert(firstNode, secondNode);
@@ -66,20 +66,36 @@ public class DataStructureTest {
 				&& linkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
 	}
-	
-	//UC5 delete first node of linked list
-	@Test 
+
+	// UC5 delete first node of linked list
+	@Test
 	public void givenThreeNode_shouldDeleteFirstNode() {
 		Node<Integer> firstNode = new Node<>(56);
 		Node<Integer> secondNode = new Node<>(30);
 		Node<Integer> thirdNode = new Node<>(70);
-		LinkedList linkedList = new LinkedList();
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
 		linkedList.append(firstNode);
 		linkedList.append(secondNode);
 		linkedList.append(thirdNode);
 		linkedList.pop();
 		boolean result = linkedList.head.equals(secondNode) && linkedList.head.getNext().equals(thirdNode)
 				&& linkedList.tail.equals(thirdNode);
+		Assert.assertTrue(result);
+	}
+
+	// UC6 delete last node of linked list
+	@Test
+	public void givenThreeNode_shouldDeleteLastNode() {
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(70);
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		linkedList.append(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		linkedList.popLastNode();
+		boolean result = linkedList.head.equals(firstNode) && linkedList.head.getNext().equals(secondNode)
+				&& linkedList.tail.equals(secondNode);
 		Assert.assertTrue(result);
 	}
 }
