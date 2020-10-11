@@ -114,4 +114,21 @@ public class DataStructureTest {
 		Assert.assertTrue(result);
 	}
 
+	// UC8 find the node with given key value and insert a new node
+	@Test
+	public void givenThreeNodes_findANode_shoudlInsertNewNode() {
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(70);
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		linkedList.append(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		INode<Integer> nodeFound = linkedList.findNode(30);
+		Node<Integer> newNode = new Node<>(40);
+		linkedList.insert(nodeFound, newNode);
+		boolean result = linkedList.head.equals(firstNode) && linkedList.head.getNext().equals(secondNode)
+				&& linkedList.head.getNext().getNext().equals(newNode) && linkedList.tail.equals(thirdNode);
+		Assert.assertTrue(result);
+	}
 }

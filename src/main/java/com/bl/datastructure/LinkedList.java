@@ -35,10 +35,12 @@ public class LinkedList<K> {
 	}
 
 	// Insert nodes between nodes
-	public void insert(INode firstNode, INode newNode) {
-		INode tempNode = firstNode.getNext();
+	public void insert(INode<K> firstNode, INode<K> newNode) {
+		INode<K> tempNode = firstNode.getNext();
 		firstNode.setNext(newNode);
 		newNode.setNext(tempNode);
+		System.out.println(" --- Final linked list after insert ----");
+		printLinkedList();
 	}
 
 	// delete first node
@@ -53,7 +55,6 @@ public class LinkedList<K> {
 
 	// delete last node
 	public void popLastNode() {
-		printLinkedList();
 		if (this.head == null && this.tail == null) {
 			System.out.println("Empty linked list");
 		} else {
@@ -63,7 +64,6 @@ public class LinkedList<K> {
 			}
 			tempNode.setNext(null);
 			this.tail = tempNode;
-			printLinkedList();
 		}
 	}
 	
