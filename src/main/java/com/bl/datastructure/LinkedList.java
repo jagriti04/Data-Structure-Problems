@@ -40,4 +40,14 @@ public class LinkedList {
 		firstNode.setNext(newNode);
 		newNode.setNext(tempNode);
 	}
+	
+	// delete first node
+	public void pop() {
+		if (this.head == null) {
+			System.out.println("Empty linked list");
+		} else {
+			INode tempNode = this.head;
+			this.head = tempNode.getNext();
+		}
+	}
 }

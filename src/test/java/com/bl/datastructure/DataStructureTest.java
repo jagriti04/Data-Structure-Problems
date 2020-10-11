@@ -66,4 +66,20 @@ public class DataStructureTest {
 				&& linkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
 	}
+	
+	//UC5 delete first node of linked list
+	@Test 
+	public void givenThreeNode_shouldDeleteFirstNode() {
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(70);
+		LinkedList linkedList = new LinkedList();
+		linkedList.append(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		linkedList.pop();
+		boolean result = linkedList.head.equals(secondNode) && linkedList.head.getNext().equals(thirdNode)
+				&& linkedList.tail.equals(thirdNode);
+		Assert.assertTrue(result);
+	}
 }
