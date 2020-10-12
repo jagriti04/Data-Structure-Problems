@@ -168,18 +168,34 @@ public class DataStructureTest {
 				&& linkedList.head.getNext().getNext().equals(firstNode) && linkedList.tail.equals(fourthNode);
 		Assert.assertTrue(result);
 	}
-	
-	//UC1 create stack
+
+	// UC1 create stack
 	@Test
-	public void given3NumbersAddedInStackShouldHaveLastAddedNode () {
-		Node<Integer> myThirdNode = new Node<>(56);
-		Node<Integer> mySecondNode = new Node<>(30);
-		Node<Integer> myFirstNode = new Node<>(70);
-		Stack stack = new Stack();
-		stack.push(myFirstNode);
-		stack.push(mySecondNode);
-		stack.push(myThirdNode);
-		INode peak = stack.peak();
-		Assert.assertEquals(myThirdNode, peak);
+	public void givenThreeNumbersAddedInStack_shouldHaveLastAddedNode() {
+		Node<Integer> thirdNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> firstNode = new Node<>(70);
+		Stack<Integer> stack = new Stack<Integer>();
+		stack.push(firstNode);
+		stack.push(secondNode);
+		stack.push(thirdNode);
+		INode<Integer> peak = stack.peak();
+		Assert.assertEquals(thirdNode, peak);
+	}
+
+	// UC2 pop an element stack
+	@Test
+	public void givenThreeNumbersAddedInStack_shouldDeleteLastAddedNode() {
+		Node<Integer> thirdNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> firstNode = new Node<>(70);
+		Stack<Integer> stack = new Stack<Integer>();
+		stack.push(firstNode);
+		stack.push(secondNode);
+		stack.push(thirdNode);
+		stack.pop();
+		INode<Integer> peak = stack.peak();
+		
+		Assert.assertEquals(secondNode, peak);
 	}
 }

@@ -1,19 +1,25 @@
 package com.bl.datastructure;
 
-public class Stack {
-	private final LinkedList linkedList;
+public class Stack<K extends Comparable<K>> {
+	private final LinkedList<K> linkedList;
 
 	public Stack() {
-		this.linkedList = new LinkedList();	
+		this.linkedList = new LinkedList<K>();	
 	}
 
-	public void push(INode myNode) {
-		linkedList.add(myNode);
+	public void push(INode<K> node) {
+		linkedList.add(node);
 	}
 
-	public INode peak() {
+	public INode<K> peak() {
 		// TODO Auto-generated method stub
 		return linkedList.head;
+	}
+	
+	public void pop() {
+		linkedList.popFirstNode();
+		System.out.println("after stack pop");
+		linkedList.printLinkedList();
 	}
 
 }
