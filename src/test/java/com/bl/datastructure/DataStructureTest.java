@@ -3,6 +3,10 @@ package com.bl.datastructure;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.bl.junitMood.DataStructureProblem.INode;
+import com.bl.junitMood.DataStructureProblem.MyNode;
+import com.bl.junitMood.DataStructureProblem.MyStack;
+
 public class DataStructureTest {
 	@Test
 	public void whenCallWelcomeMethod_shouldReturnTrue() {
@@ -167,5 +171,19 @@ public class DataStructureTest {
 		boolean result = linkedList.head.equals(secondNode) && linkedList.head.getNext().equals(thirdNode)
 				&& linkedList.head.getNext().getNext().equals(firstNode) && linkedList.tail.equals(fourthNode);
 		Assert.assertTrue(result);
+	}
+	
+	//UC1 create stack
+	@Test
+	public void given3NumbersAddedInStackShouldHaveLastAddedNode () {
+		Node<Integer> myThirdNode = new Node<>(56);
+		Node<Integer> mySecondNode = new Node<>(30);
+		Node<Integer> myFirstNode = new Node<>(70);
+		Stack stack = new Stack();
+		stack.push(myFirstNode);
+		stack.push(mySecondNode);
+		stack.push(myThirdNode);
+		INode peak = stack.peak();
+		Assert.assertEquals(myThirdNode, peak);
 	}
 }
