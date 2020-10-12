@@ -47,6 +47,18 @@ public class MyLinkedHashMap<K extends Comparable<K>, V> {
 		}
 	}
 	
+	// to delete a given word
+	public K deleteWord(K key) {
+		int index = this.getBucketIndex(key);
+		LinkedList<K> myLinkedList = this.myBucketArray.get(index);
+		if (myLinkedList == null) {
+			System.out.println("word not present");
+			return null;
+		}
+		MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) myLinkedList.deleteGivenKey(key);
+		return (myMapNode == null) ? null : myMapNode.getKey();
+	}
+	
 	@Override
 	public String toString() {
 		return "MyLinkedHashMap List{" + myBucketArray + "}";
