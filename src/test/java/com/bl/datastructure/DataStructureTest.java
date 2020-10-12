@@ -200,4 +200,18 @@ public class DataStructureTest {
 		
 		Assert.assertEquals(true, isEmpty);
 	}
+	
+	//UC3 create a queue and enqueue elements
+	@Test
+	public void givenThreeNumbers_enQueueThem_shouldBeAppened() {
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(70);
+		Queue<Integer> queue = new Queue<Integer>();
+		queue.enqueue(firstNode);
+		queue.enqueue(secondNode);
+		queue.enqueue(thirdNode);;
+		INode<Integer> peak = queue.peak();
+		Assert.assertEquals(firstNode, peak);
+	}
 }
