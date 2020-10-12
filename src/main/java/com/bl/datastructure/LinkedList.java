@@ -1,6 +1,6 @@
 package com.bl.datastructure;
 
-public class LinkedList<K> {
+public class LinkedList<K extends Comparable<K>> {
 	public INode<K> head;
 	public INode<K> tail;
 	private int linkedListSize;
@@ -43,13 +43,11 @@ public class LinkedList<K> {
 		INode<K> tempNode = firstNode.getNext();
 		firstNode.setNext(newNode);
 		newNode.setNext(tempNode);
-		System.out.println(" --- Final linked list after insert ----");
-		printLinkedList();
 		linkedListSize++;
 	}
 
 	// delete first node
-	public void pop() {
+	public void popFirstNode() {
 		if (this.head == null) {
 			System.out.println("Empty linked list");
 		} else {
@@ -65,7 +63,7 @@ public class LinkedList<K> {
 			System.out.println("Empty linked list");
 		} else {
 			INode<K> tempNode = this.head;
-			while (tempNode.getNext() !=  this.tail) {
+			while (tempNode.getNext() != this.tail) {
 				tempNode = tempNode.getNext();
 			}
 			tempNode.setNext(null);
@@ -73,7 +71,7 @@ public class LinkedList<K> {
 		}
 		linkedListSize--;
 	}
-	
+
 	// delete the given node
 	public void deleteGivenNode(INode<K> givenNode) {
 		INode<K> tempNode = this.head;
@@ -83,16 +81,14 @@ public class LinkedList<K> {
 			}
 			tempNode = tempNode.getNext();
 		}
-		System.out.println("After delete---");
-		printLinkedList();
 		linkedListSize--;
 	}
 
-	//get size of linkedList
+	// get size of linkedList
 	public int getSize() {
 		return linkedListSize;
 	}
-	
+
 	// search linked list to find an element
 	public INode<K> findNode(K key) {
 		INode<K> tempNode = this.head;
@@ -105,15 +101,40 @@ public class LinkedList<K> {
 		System.out.println("No such node");
 		return null;
 	}
-	
+
+	// add in ascending order (UC10- sorted linked list)
+	public void addInAscendingOrder(INode<K> newNode) {
+		System.out.println(newNode.getKey());
+		if (this.head == null) {
+			this.head = newNode;
+		} else if (this.head.getKey().compareTo(newNode.getKey()) > 0) {
+			newNode.setNext(head);
+			this.head = newNode;
+		} else {
+			INode<K> tempNode = this.head;
+			while (tempNode.getNext() != null && tempNode.getNext().getKey().compareTo(newNode.getKey()) < 0) {
+				tempNode = tempNode.getNext();
+			}
+			newNode.setNext(tempNode.getNext());
+			tempNode.setNext(newNode);
+		}
+		System.out.println("---after inserting in ascending order ---");
+		printLinkedList();
+		INode<K> tempNode = this.head;
+		while (tempNode.getNext() != null)
+			tempNode = tempNode.getNext();
+		this.tail = tempNode;
+	}
+
 	// print the linked list
 	public void printLinkedList() {
 		INode<K> tempNode = this.head;
 		int nodeNum = 1;
 		while (tempNode != null) {
-			System.out.println(nodeNum + " "+ tempNode.getKey());
+			System.out.println(nodeNum + " " + tempNode.getKey());
 			tempNode = tempNode.getNext();
 			nodeNum++;
 		}
+		return;
 	}
 }

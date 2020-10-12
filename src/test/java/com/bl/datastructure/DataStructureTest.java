@@ -77,7 +77,7 @@ public class DataStructureTest {
 		linkedList.append(firstNode);
 		linkedList.append(secondNode);
 		linkedList.append(thirdNode);
-		linkedList.pop();
+		linkedList.popFirstNode();
 		boolean result = linkedList.head.equals(secondNode) && linkedList.head.getNext().equals(thirdNode)
 				&& linkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
@@ -144,10 +144,28 @@ public class DataStructureTest {
 		linkedList.append(secondNode);
 		linkedList.append(thirdNode);
 		linkedList.append(fourthNode);
-		
+
 		INode<Integer> nodeFound = linkedList.findNode(40);
 		linkedList.deleteGivenNode(nodeFound);
 		int size = linkedList.getSize();
 		Assert.assertEquals(size, 3);
+	}
+
+	// UC10 make a sorted linked list
+	@Test
+	public void givenFourNodes_shouldAddNodeInAscendingOrder() {
+		LinkedList<Integer> linkedList = new LinkedList<Integer>();
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(40);
+		Node<Integer> fourthNode = new Node<>(70);
+		linkedList.addInAscendingOrder(firstNode);
+		linkedList.addInAscendingOrder(secondNode);
+		linkedList.addInAscendingOrder(thirdNode);
+		linkedList.addInAscendingOrder(fourthNode);
+
+		boolean result = linkedList.head.equals(secondNode) && linkedList.head.getNext().equals(thirdNode)
+				&& linkedList.head.getNext().getNext().equals(firstNode) && linkedList.tail.equals(fourthNode);
+		Assert.assertTrue(result);
 	}
 }
