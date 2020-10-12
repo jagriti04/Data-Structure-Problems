@@ -21,5 +21,11 @@ public class Stack<K extends Comparable<K>> {
 		System.out.println("after stack pop");
 		linkedList.printLinkedList();
 	}
-
+	
+	public boolean isStackEmpty() {
+		if (linkedList.getSize() >0) {
+			return false;
+		}
+		return true;
+	}
 }

@@ -194,8 +194,10 @@ public class DataStructureTest {
 		stack.push(secondNode);
 		stack.push(thirdNode);
 		stack.pop();
-		INode<Integer> peak = stack.peak();
+		stack.pop();
+		stack.pop();
+		boolean isEmpty = stack.isStackEmpty();
 		
-		Assert.assertEquals(secondNode, peak);
+		Assert.assertEquals(true, isEmpty);
 	}
 }
