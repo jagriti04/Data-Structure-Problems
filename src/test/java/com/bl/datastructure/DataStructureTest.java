@@ -3,10 +3,6 @@ package com.bl.datastructure;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.bl.junitMood.DataStructureProblem.INode;
-import com.bl.junitMood.DataStructureProblem.MyNode;
-import com.bl.junitMood.DataStructureProblem.MyStack;
-
 public class DataStructureTest {
 	@Test
 	public void whenCallWelcomeMethod_shouldReturnTrue() {
