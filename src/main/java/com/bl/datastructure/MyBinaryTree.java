@@ -27,7 +27,7 @@ public class MyBinaryTree<K extends Comparable<K>> {
 		return isPresent;
 	}
 
-	// recursive function to add nodes
+	// recursive function to search nodes
 	private boolean searchRecursively(MyBinaryNode<K> current, K key) {
 		if (current == null)
 			return false;
