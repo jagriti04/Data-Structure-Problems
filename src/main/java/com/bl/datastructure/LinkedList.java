@@ -91,9 +91,12 @@ public class LinkedList<K extends Comparable<K>> {
 
 	// search linked list to find an element
 	public INode<K> findNode(K key) {
+		if (head == null) {
+			return null;
+		}
 		INode<K> tempNode = this.head;
 		while (tempNode != null) {
-			if (tempNode.getKey() == key) {
+			if (tempNode.getKey().equals(key)) {
 				return tempNode;
 			}
 			tempNode = tempNode.getNext();
