@@ -210,8 +210,9 @@ public class DataStructureTest {
 		Queue<Integer> queue = new Queue<Integer>();
 		queue.enqueue(firstNode);
 		queue.enqueue(secondNode);
-		queue.enqueue(thirdNode);;
+		queue.enqueue(thirdNode);
+		queue.dequeue();
 		INode<Integer> peak = queue.peak();
-		Assert.assertEquals(firstNode, peak);
+		Assert.assertEquals(secondNode, peak);
 	}
 }

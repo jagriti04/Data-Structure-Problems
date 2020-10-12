@@ -14,4 +14,8 @@ public class Queue <K extends Comparable<K>> {
 	public INode<K> peak() {
 		return linkedList.head;
 	}
+	
+	public void dequeue() {
+		linkedList.popFirstNode();
+	}
 }
